@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class NewsApiService {
-  private apiKey = '676f017549224f488970f1835f9db971';
+  private apiKey = 'YOUR_API_KEY';
   private baseUrl = 'https://newsapi.org/v2/top-headlines';
 
   constructor(private http: HttpClient) {}
