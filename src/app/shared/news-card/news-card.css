@@ -1,0 +1,39 @@
+.news-card {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+  transition: transform 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+
+.news-card:hover {
+  transform: scale(1.02);
+}
+
+.news-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.news-content {
+  padding: 10px;
+}
+
+.news-content h3 {
+  font-size: 18px;
+  margin: 5px 0;
+}
+
+.news-content p {
+  font-size: 14px;
+  color: #555;
+}
+
+.news-content a {
+  color: #ff7a00;
+  text-decoration: none;
+  font-weight: bold;
+}

@@ -1,0 +1,35 @@
+<!-- ...existing code... -->
+<div class="container">
+  <div *ngIf="isLoading" class="loading">Loading...</div>
+
+  <!-- Slider -->
+  <div class="slider" *ngIf="sliderArticles.length > 0">
+    <div *ngFor="let item of sliderArticles" class="slide">
+      <img *ngIf="item.urlToImage" [src]="item.urlToImage" alt="news image" />
+      <div class="slide-info">
+        <h2>{{ item.title }}</h2>
+        <p>{{ item.description }}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Haber listesi -->
+  <div class="news-list">
+    <div *ngFor="let item of articles" class="news-item">
+      <img *ngIf="item.urlToImage" [src]="item.urlToImage" alt="news image" />
+      <div class="news-info">
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.description }}</p>
+        <a [href]="item.url" target="_blank">Read...</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sayfalama -->
+  <div class="pagination" *ngIf="totalPages > 1">
+    <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">← Prev</button>
+    <span>Page {{currentPage}} / {{totalPages}}</span>
+    <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages">Next →</button>
+  </div>
+</div>
+<!-- ...existing code... -->

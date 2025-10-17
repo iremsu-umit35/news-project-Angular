@@ -1,0 +1,149 @@
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: #f8f9fa; /* Header'ın beyazlığını ortaya çıkarmak için hafif gri arka plan */
+  line-height: 1.5;
+}
+
+/* Ana Header  */
+.main-header {
+  width: 100%;
+  background-color: #ffffff; 
+  padding: 16px 32px; 
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07); 
+  border-bottom: 1px solid #e9ecef;
+}
+
+/* === Üst Kısım (Marka + Arama) === */
+.header-top {
+  display: flex;
+  justify-content: space-between; /* Markayı sola, aramayı sağa yaslar */
+  align-items: center; /* Dikey olarak ortalar */
+  flex-wrap: wrap; /* Küçük ekranlarda alt satıra kaydırır */
+  gap: 16px; /* Öğeler arasında boşluk */
+  padding-bottom: 16px; /* Navigasyon ile arasına boşluk */
+}
+
+/* === Marka === */
+.brand {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #212529; 
+}
+
+/* === Arama Çubuğu === */
+.search-bar {
+  display: flex; /* Input ve butonu yanyana getirir */
+}
+
+.search-bar input[type="text"] {
+  min-width: 250px;
+  border: 1px solid #ced4da;
+  padding: 10px 12px;
+  font-size: 0.95rem;
+  border-radius: 6px 0 0 6px; /* Sol kenarları yuvarla */
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Tıklandığında (focus) hafif bir parlama efekti */
+.search-bar input[type="text"]:focus {
+  border-color: #e65c00;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+}
+
+.search-bar button {
+  padding: 10px 16px;
+  border: none;
+  background-color: #e65c00; /* Ana renk */
+  color: white;
+  cursor: pointer;
+  border-radius: 0 6px 6px 0; /* Sağ kenarları yuvarla */
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.search-bar button:hover {
+  background-color: #e65c00; /* Hover'da koyu ton */
+}
+
+/* === Ana Navigasyon === */
+.main-nav {
+  border-top: 1px solid #e9ecef; /* Üst bölümden ayıran ince çizgi */
+  padding-top: 12px;
+}
+
+.main-nav ul {
+  list-style: none; /* Madde imlerini kaldır */
+  display: flex;
+  flex-wrap: wrap; /* Küçük ekranlarda kaydır */
+  gap: 12px; /* Linkler arası boşluk */
+}
+
+.main-nav a {
+  text-decoration: none;
+  color: #495057; /* Hafif soluk metin rengi */
+  font-size: 1.05rem;
+  font-weight: 500;
+  padding: 8px 12px; /* Tıklama alanını büyüt */
+  border-radius: 6px;
+  border-bottom: 3px solid transparent; /* Aktif link için zemin */
+  transition: all 0.3s ease;
+}
+
+.main-nav a:hover {
+  background-color: #f1f3f5; /* Hafif gri hover efekti */
+  color: #e65c00;
+}
+
+/* Angular'ın eklediği 'active' class'ı */
+.main-nav a.active {
+  color: #e65c00; /* Aktif link rengi */
+  font-weight: 600;
+  border-bottom: 3px solid #e65c00; /* Aktif olduğunu belirten alt çizgi */
+  background-color: transparent;
+}
+
+
+/* === Mobil Cihazlar İçin === */
+@media (max-width: 768px) {
+  .main-header {
+    padding: 16px;
+  }
+  
+  .header-top {
+    flex-direction: column; /* Marka ve aramayı alt alta getir */
+    align-items: stretch; /* Öğeleri tam genişliğe yay */
+  }
+
+  .brand {
+    text-align: center; /* Markayı ortala */
+    font-size: 1.5rem;
+  }
+
+  .search-bar {
+    width: 100%;
+  }
+
+  .search-bar input[type="text"] {
+    width: 100%; /* Input'u tam genişlet */
+    flex-grow: 1;
+  }
+
+  .main-nav ul {
+    justify-content: center; /* Linkleri ortala */
+    gap: 4px;
+  }
+
+  .main-nav a {
+    padding: 8px;
+    font-size: 0.95rem;
+  }
+}

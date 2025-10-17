@@ -1,0 +1,20 @@
+<header class="main-header">
+  <div class="header-top">
+    <div class="brand">İremsu Ümit | News Project</div>
+
+    <div class="search-bar">
+      <input [(ngModel)]="searchTerm" type="text" placeholder="Search in the news..." (keyup.enter)="performSearch()">
+      <button (click)="performSearch()">Search</button>
+    </div>
+  </div>
+
+  <nav class="main-nav">
+    <ul>
+      <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Mainpage</a></li>
+      <li><a routerLink="/category/general" routerLinkActive="active">General</a></li>
+      <li><a routerLink="/category/sports" routerLinkActive="active">Sport</a></li>
+      <li><a routerLink="/category/business" routerLinkActive="active">Business</a></li>
+      <li><a routerLink="/about" routerLinkActive="active">About</a></li>
+    </ul>
+  </nav>
+</header>

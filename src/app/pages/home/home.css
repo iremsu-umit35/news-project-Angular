@@ -1,0 +1,182 @@
+/* === Genel Konteyner === */
+/* İçeriği ortalar ve kenar boşlukları verir */
+.container {
+  max-width: 1000px; /* İçeriğin maksimum genişliği */
+  margin: 20px auto; /* Sayfada ortalar (üst/alt 20px, sağ/sol otomatik) */
+  padding: 20px;     /* İç boşluk */
+}
+
+/* === "Slider" (Öne Çıkan Haberler) === */
+/* Bu bölüm, ilk 3 haberi (veya kaç tane sliderArticles'da varsa) 
+   dikey olarak listeler */
+.slider {
+  display: grid;
+  grid-template-columns: 1fr; /* Öğeleri tek sütun halinde (alt alta) dizer */
+  gap: 20px;                  /* Her "slide" arasında 20px boşluk */
+  margin-bottom: 40px;        /* Slider ile haber listesi arasına boşluk */
+}
+
+.slide {
+  position: relative; /* İçindeki 'slide-info'yu konumlandırmak için */
+  border-radius: 10px;
+  overflow: hidden; /* Köşeleri yuvarlatılmış resmi gizlemek için */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Hafif gölge */
+}
+
+.slide img {
+  width: 100%;
+  height: 350px;       /* Slider resimleri için sabit yükseklik */
+  object-fit: cover; /* Resmi kırparak sığdırır */
+  display: block; /* Resim altındaki minik boşluğu kaldırır */
+}
+
+.slide-info {
+  position: absolute; /* Resmin üzerine konumlanır */
+  bottom: 15px;       /* Alttan 15px */
+  left: 15px;         /* Soldan 15px */
+  color: white;
+  background: rgba(0, 0, 0, 0.6); /* Yarı saydam siyah arka plan (okunurluk için) */
+  padding: 10px 15px;
+  border-radius: 5px;
+}
+
+.slide-info h2 {
+  margin: 0 0 5px 0;
+  font-size: 1.5rem;
+}
+
+.slide-info p {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+/* === Haber Listesi === */
+/* Slider'dan sonraki haberler için dikey liste */
+.news-list {
+  display: flex;
+  flex-direction: column; /* Öğeleri alt alta dizer */
+  gap: 20px;              /* Haber öğeleri arasında 20px boşluk */
+}
+
+/* Her bir haber öğesi (Resim solda, yazı sağda) */
+.news-item {
+  display: flex; /* İçeriği (resim + info) yan yana dizer */
+  gap: 20px;     /* Resim ve yazı arasında boşluk */
+  background: #f9f9f9; /* Hafif kirli beyaz arka plan */
+  border: 1px solid #eee;
+  border-radius: 10px;
+  overflow: hidden; /* Yuvarlatılmış köşeler için */
+  transition: box-shadow 0.3s ease;
+}
+
+.news-item:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); /* Hover efekti */
+}
+
+.news-item img {
+  width: 200px;  /* Sabit resim genişliği */
+  height: 130px; /* Sabit resim yüksekliği */
+  object-fit: cover;
+  flex-shrink: 0; /* Ekran küçüldüğünde resmin bozulmasını engeller */
+}
+
+.news-info {
+  padding: 10px 15px 10px 0; /* Yazı için iç boşluk (sola boşluk 'gap' ile verildi) */
+  flex: 1; /* Kalan tüm alanı doldurur */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* İçeriği dikey ortalar */
+}
+
+.news-info h3 {
+  margin: 0 0 8px 0;
+  color: #222;
+  font-size: 1.15rem;
+}
+
+.news-info p {
+  margin: 0 0 10px 0;
+  font-size: 0.9rem;
+  color: #555;
+  /* Açıklamayı 2 satırla sınırla (isteğe bağlı) */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.news-info a {
+  color: #e65c00; /* Turuncu/Kırmızı bir ton */
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.news-info a:hover {
+  text-decoration: underline;
+}
+
+
+/* === Sayfalama === */
+.pagination {
+  text-align: center;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}
+
+.pagination span {
+  margin: 0 15px;
+  font-size: 1rem;
+  color: #444;
+}
+
+.pagination button {
+  margin: 0 5px;
+  background: #e65c00; /* Link rengiyle aynı */
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.pagination button:hover:not(:disabled) {
+  background: #e65c00; /* Hover'da koyu ton */
+}
+
+.pagination button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* === Responsive (Mobil Uyum) === */
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+    margin-top: 10px;
+  }
+  
+  .slide img {
+    height: 250px; /* Mobilde slider yüksekliğini azalt */
+  }
+  
+  /* Haber öğesini (resim üstte, yazı altta) dikey hale getir */
+  .news-item {
+    flex-direction: column;
+    align-items: stretch; /* Öğeleri tam genişliğe yay */
+    gap: 0;
+  }
+
+  .news-item img {
+    width: 100%; /* Resim tam genişlik */
+    height: 180px; /* Mobilde resim yüksekliği */
+    border-radius: 10px 10px 0 0; /* Sadece üst köşeleri yuvarla */
+  }
+  
+  .news-info {
+    padding: 15px; /* Mobilde yazıya her yönden boşluk ver */
+  }
+}

@@ -1,0 +1,50 @@
+<section class="category-container">
+  <h2>{{ categoryName | titlecase }} News</h2>
+
+  <div class="category-content">
+    <!-- Sol sütun: filtreleme -->
+    <aside class="filter-sidebar">
+      <h3>Filter</h3>
+
+      <!-- 🔍 Arama kutusu -->
+      <label>
+        Search world:
+        <input 
+          type="text" 
+          [(ngModel)]="searchQuery" 
+          (keyup)="onSearchChange()" 
+          placeholder="esc: economic, footboll...">
+      </label>
+
+      <label>
+        <input type="checkbox" [(ngModel)]="showImages">
+        News that is only visual
+      </label>
+
+      <label>
+        <input type="checkbox" [(ngModel)]="onlyRecent">
+        News from the last 24 hours
+      </label>
+
+      <button (click)="applyFilters()">Apply</button>
+    </aside>
+
+    <!-- Sağ sütun: haberler -->
+    <div class="news-list-container">
+      <div *ngIf="isLoading">Loading...</div>
+
+      <div *ngIf="!isLoading && filteredArticles.length === 0">
+        Not found any news matching your criteria.
+      </div>
+<!-- haber kutucuğu -->
+      <div *ngIf="!isLoading" class="news-list">
+        <div *ngFor="let news of filteredArticles" class="news-item">
+          <img [src]="news.urlToImage" alt="Haber görseli" *ngIf="news.urlToImage">
+          <h3>{{ news.title }}</h3>
+          <p>{{ news.description }}</p>
+          <a [href]="news.url" target="_blank">Go News</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

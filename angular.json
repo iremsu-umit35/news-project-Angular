@@ -61,6 +61,7 @@
             "development": {
               "buildTarget": "gazete-projesi:build:development"
             }
+            
           },
           "defaultConfiguration": "development"
         },
@@ -88,5 +89,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

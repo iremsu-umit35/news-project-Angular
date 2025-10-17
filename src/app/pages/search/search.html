@@ -1,0 +1,16 @@
+<section class="search-container">
+  <h2>"{{ query }}" for result</h2>
+
+  <div *ngIf="isLoading">Loading...</div>
+
+  <div *ngIf="!isLoading && articles.length === 0">Not found result.</div>
+
+  <div *ngIf="!isLoading && articles.length > 0" class="news-list">
+    <div *ngFor="let news of articles" class="news-item">
+      <img [src]="news.urlToImage" alt="Haber görseli" *ngIf="news.urlToImage">
+      <h3>{{ news.title }}</h3>
+      <p>{{ news.description }}</p>
+      <a [href]="news.url" target="_blank">Go News</a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,8 @@
+<div class="news-card">
+  <img *ngIf="article.urlToImage" [src]="article.urlToImage" alt="Haber görseli">
+  <div class="news-content">
+    <h3>{{ article.title }}</h3>
+    <p>{{ article.description }}</p>
+    <a [href]="article.url" target="_blank">Habere Git</a>
+  </div>
+</div>
